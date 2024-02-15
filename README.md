@@ -7,6 +7,8 @@ All such reasons are what make the sport so beloved by its gigantic fanbase. Wor
 
 Numerous advances in computational tools, and the mass adoption of data-centered processes, have allowed the materialization of computational systems finely tuned for predicting the outcomes of sporting events. A computational system capable of predicting the outcome of football matches has the potential to generate millions of U.S dollars in revenue. 
 
+
+
 2. Formulation 
 
 As mentioned in the previous sections, the goal of this project is to develop a computational system capable of predicting the outcome of football matches. To formulate the problem most appropriately, two observations must be made. First, like in many other sports, there are three possible general outcomes for any match: “home team wins”, “visitor team wins” or “draw”. To establish a convention, from now on the outcome “home team wins” will be referenced as “home”, and the outcome “visitor team wins” will be referenced as “away”. Second, theoretically there is an infinite number of ways in which each outcome can come about. For example, a “home” outcome can come about a 1-0 result, a 2-0 result, a 2-1 result, a 3-0, etc. Based on these observations, the problem of predicting football match outcomes can be formulated as two separate data mining tasks: classification and regression. 
@@ -18,6 +20,8 @@ One of the ways to formulate the problem of predicting football match outcomes i
 2.2 Regression 
 
 Another way to formulate the problem of predicting football match outcomes is as a regression problem. In contrast to the previous formulation, the numerical results in terms of goals are fundamental under this formulation. The input to the regression task is a feature vector representing the characteristics of an individual team, not of the entire match (again, the exact composition of the feature vector will be discussed in later sections). The output of the task is a single integer representing the predicted number of goals the team will score. Consequently, the exact outcome of any match can be predicted by predicting the number of goals each team will score. 
+
+
 
 3. Datasets 
 
@@ -49,6 +53,7 @@ The datasets resulting from the previous stage were modified to generate two col
 For the regression collection each data entry, which was a combination of both teams’ statistics, was divided into two. This essentially created regression data subsets with half the number of features but twice the number entries. Finally, a single binary feature was added to each resulting data entry. This new feature indicates whether the team is playing at “Home” or playing “Away”. 
 
 
+
 4. Algorithm 
 
 The problem of predicting the outcome of football matches was formulated as two separate data mining tasks. Therefore, two algorithms needed to be selected, one for classification and one for regression. The process of selecting a suitable algorithm was similar for each task and is described in more detail below. 
@@ -68,6 +73,7 @@ Even though regression algorithms were not explicitly covered in class, the intu
 The five regressors preselected for this task were: Lasso, Ridge, Elastic-Net and Random Forest. The regressors mentioned were implemented using the open source sklearn python library. For the preselection process the classifier hyperparameters were not tuned in any way. Rather, the classifiers were executed with minimal tuning to analyze the rudimentary behavior of the algorithms. 
 
 The regressors were executed with each country category data subset, but since the “All” category was the largest its results provided the best insights. The resulting mean-squared-error results for this category were: Random Forest 1.5120972443355787, Lasso 1.537159887439279, Ridge 1.460546971699954, Elastic-Net 1.504756808485736. Based on these results, the Ridge regressor was selected to be experimented on. 
+
 
 
 5. Experiment 
@@ -140,6 +146,7 @@ Best parameters: {'alpha': 10.0, 'random_state': 10, 'solver': 'saga'}
 Mean squared error: 0.9222290263319045 
 
 As you can observe, after tuning the parameters of the Ridge regression algorithm, the mean squared error decreased by 36%. Generally speaking, predicting the outcome of football matches using regression as explained in section 2.2 is more effective than using classification as explained in section 2.1. The mean squared error reported above could be acceptable since, on average, the number of goals predicted is less than 1 goal away from the true number. One explanation for the higher effectiveness of regression is the type of data available. The data used to classify and regress contains information about the season statistics of teams. This information has important insights on a team’s goals statistics such as total goals scored in the season, total goals received in the season, average number of goals at half-time, average number of goals at full-time. Therefore, even though the data does not contain in-game statistics, it contains information useful for regression.  
+
 
 
 Conclusion 
