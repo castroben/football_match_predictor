@@ -110,11 +110,11 @@ The algorithms were executed with all country category data subsets. However, on
 Best parameters: {'bootstrap': True, 'criterion': 'entropy', 'max_features': 'sqrt', 'n_estimators': 200} 
 
 .    | Precision | Recall | F1-score | Support 
-:---: | :---: | :---: | :---: | :---:
+ |  |  |  | 
 Away |    0.45   |  0.44  |   0.45   |   243   
-:---: | :---: | :---: | :---: | :---:
+ |  |  |  | 
 Draw |    0.30   |  0.08  |   0.12   |   210   
-:---: | :---: | :---: | :---: | :---:
+ |  |  |  | 
 Home |    0.53   |  0.76  |   0.62   |   364   
 
 Accuracy: 49%  
